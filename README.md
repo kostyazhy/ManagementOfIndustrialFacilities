@@ -1,5 +1,3 @@
-# ManagementOfIndustrialFacilities
-Management of industrial facilities. 
       Тестовое задание
 Задача: Управление промышленными объектами.
 
