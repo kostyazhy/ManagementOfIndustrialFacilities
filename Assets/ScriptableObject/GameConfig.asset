@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179e9d4a09d499c4794e64243ddd46b4, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  PosCrane: {x: 0, y: 0, z: 0}
   "PositionTower\u0421rane": {x: 18, y: 15, z: 3.25}
+  StartPositionTower: {x: 4, y: 5, z: 7}
+  StartPositionMagnet: {x: 1, y: 5, z: 4}
   SpeedTowerCrane: 2
+  minDistanceForDeadLine: 0
+  prefabCrane: {fileID: 3058357726637430240, guid: 6aa8999524b237b43ab62a63716829c5,
+    type: 3}
+  prefabTower: {fileID: 3501140012433398732, guid: cbf5bb8764f392f40932ffe4ba3ca497,
+    type: 3}

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class Switch : MonoBehaviour, ISwitch
+public class SwitchBack : MonoBehaviour, ISwitch
 {
     [Inject]
     private ControlPanel _controlPanel;
 
     public void OnActive()
     {
-        Debug.Log("On actived Switch");
+        _controlPanel.MoveUnitBack();
+        _controlPanel.Value = 2;
     }
 }

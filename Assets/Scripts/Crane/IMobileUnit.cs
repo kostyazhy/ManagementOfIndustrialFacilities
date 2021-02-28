@@ -1,10 +1,7 @@
 ﻿
 public interface IMobileUnit
 {
-    void MoveForward();
+    void MoveThere();
     void MoveBack();
-    void MoveLeft();
-    void MoveRight();
-    void MoveUp();
-    void MoveDown();
+    void StopUnit();
 }

@@ -1,51 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class ControlCrane : MonoBehaviour, IMobileUnit
+public class ControlCrane : MonoBehaviour
 {
-    private Transform _transform;
+    [Inject]
+    private GameConfig _config;
 
     public bool activeForwardSwitch = false;
     public bool activeBackSwitch = false;
 
+    private ITower _tower;
+
+    [Inject]
+    private Vector3 _startPosTower;
+
+    private void Start()
+    {
+        //Init();
+    }
+
     private void Update()
     {
         if (activeBackSwitch)
-            MoveBack();
+            _tower.MoveBack();
         else if (activeForwardSwitch)
-            MoveForward();
+            _tower.MoveThere();
     }
 
-    public void MoveForward()
+    /*public void Init()
     {
-        Debug.Log("MoveForward");
-        transform.Translate(Vector3.forward);
+        CreateTower();
+    }*/
+
+    public void Reset()
+    {
+        _startPosTower = _config.StartPositionTower;
     }
 
-    public void MoveBack()
+    public class CraneFabrik : Factory<Vector3, ControlCrane>
     {
-        Debug.Log("MoveBack");
-        transform.Translate(Vector3.back);
+
     }
 
-    public void MoveLeft()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public void MoveRight()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void MoveUp()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void MoveDown()
-    {
-        throw new System.NotImplementedException();
-    }
 }
