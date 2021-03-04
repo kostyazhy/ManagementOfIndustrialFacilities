@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2154292727240692453}
   - component: {fileID: 8554795341342275267}
   - component: {fileID: 5085285045345918637}
+  - component: {fileID: 4017999994279449148}
   m_Layer: 0
   m_Name: StopLine
   m_TagString: Untagged
@@ -106,6 +107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee0961f2ff9aef4ab070bf8ff09b7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &4017999994279449148
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859071842529227600}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3501140012433398732
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +245,7 @@ GameObject:
   - component: {fileID: 3631300030799546610}
   - component: {fileID: 6577269446625723035}
   - component: {fileID: 2217478127908145186}
+  - component: {fileID: 2784221760036617023}
   m_Layer: 0
   m_Name: StopLine
   m_TagString: Untagged
@@ -321,6 +339,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee0961f2ff9aef4ab070bf8ff09b7fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &2784221760036617023
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452711420708870118}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &9127310358718054093
 GameObject:
   m_ObjectHideFlags: 0

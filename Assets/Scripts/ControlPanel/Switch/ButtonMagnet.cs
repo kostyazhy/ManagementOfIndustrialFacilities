@@ -7,6 +7,12 @@ public class ButtonMagnet : Switch, ISwitch
 {
     [Inject]
     private ControlPanelController _controlPanelControllers;
+    private TapButton _tap;
+
+    private void Start()
+    {
+        _tap = GetComponent<TapButton>();
+    }
 
     /// <summary>
     /// Активирует и деактивирует магнит
@@ -15,6 +21,8 @@ public class ButtonMagnet : Switch, ISwitch
     {
         active = !active;
         _controlPanelControllers.ActiveMagnet(active, type);
+        _tap.Tap();
+        _tap.ReleaseButton();
     }
 
     /// <summary>

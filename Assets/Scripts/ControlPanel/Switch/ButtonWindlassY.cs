@@ -8,6 +8,13 @@ public class ButtonWindlassY : Switch, ISwitch
     [Inject]
     private ControlPanelController _controlPanelControllers;
 
+    private TapButton _tap;
+
+    private void Start()
+    {
+        _tap = GetComponent<TapButton>();
+    }
+
     /// <summary>
     /// Активирует движение лебедки
     /// </summary>
@@ -15,6 +22,7 @@ public class ButtonWindlassY : Switch, ISwitch
     {
         active = true;
         _controlPanelControllers.MoveWindlass(active, type);
+        _tap.Tap();
     }
 
     /// <summary>
@@ -24,6 +32,7 @@ public class ButtonWindlassY : Switch, ISwitch
     {
         active = false;
         _controlPanelControllers.MoveWindlass(active, type);
+        _tap.ReleaseButton();
     }
 
     /// <summary>

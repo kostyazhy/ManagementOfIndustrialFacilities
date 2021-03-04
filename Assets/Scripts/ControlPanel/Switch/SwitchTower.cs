@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 /// <summary>
 /// Задет поведение переключателя для башни
