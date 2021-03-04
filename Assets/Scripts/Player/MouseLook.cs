@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+
+/// <summary>
+/// Задает поведение вращения камеры
+/// </summary>
 public class MouseLook : MonoBehaviour
 {
     public enum RotationAxes

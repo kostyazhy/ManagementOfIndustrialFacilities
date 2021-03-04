@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Описывает простое движение игрока
+/// </summary>
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
-public class FPSInput : MonoBehaviour
+public class FPSInput : MonoBehaviour, IMovePlayer
 {
     [SerializeField]
     private float _speed = 6.0f;
@@ -20,6 +21,14 @@ public class FPSInput : MonoBehaviour
     }
     
     void Update()
+    {
+        Move();
+    }
+
+    /// <summary>
+    /// Реагирует на ввод с клавы и перемещает игрока
+    /// </summary>
+    public void Move()
     {
         float deltaX = Input.GetAxis("Horizontal") * _speed;
         float deltaZ = Input.GetAxis("Vertical") * _speed;

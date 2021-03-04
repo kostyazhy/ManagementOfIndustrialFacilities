@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Определяет игровые объекты как магнитные
+/// </summary>
 public class MagnetObject : MonoBehaviour, IMagnetObject
 {
 

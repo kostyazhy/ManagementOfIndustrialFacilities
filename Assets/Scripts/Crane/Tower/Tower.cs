@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Zenject;
 
+
+/// <summary>
+/// Задает поведение движения башни
+/// </summary>
 public class Tower : MonoBehaviour, IMobileUnit
 {
     private Transform _transform;
@@ -28,17 +31,26 @@ public class Tower : MonoBehaviour, IMobileUnit
         }
     }
 
+    /// <summary>
+    /// Двигает башню назад
+    /// </summary>
     public void MoveBack()
     {
         _transform.Translate(Vector3.left * _speed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Двигает башню вперед
+    /// </summary>
     public void MoveForward()
     {
         _transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
 
-    public void StopUnit()
+    /// <summary>
+    /// Останавливает башню перед ограничителем
+    /// </summary>
+    public void Stop()
     {
         Debug.Log("Stop");
         MoveBackFlag = false;
@@ -52,8 +64,16 @@ public class Tower : MonoBehaviour, IMobileUnit
         }*/
     }
 
-    public class TowerFabrik : Factory<float, CraneController, Tower>
+    /// <summary>
+    /// Создаем объект - башни
+    /// </summary>
+    /// <params>
+    /// float - _speed
+    /// CraneController - _craneController
+    /// </params>
+    public class TowerFabrik : PlaceholderFactory<float, CraneController, Tower>
     {
+
 
     }
 }

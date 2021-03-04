@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 /// <summary>
 /// Создан для отслеживания глобальных событий.
-/// Инициализация, Пауза, Выход
+/// Инициализация объектов, Пауза, Выход
 /// </summary>
 public class GameControllers : MonoBehaviour
 {

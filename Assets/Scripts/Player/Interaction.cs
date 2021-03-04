@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RayShooter : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
     private Camera _camera;
 
@@ -16,6 +14,9 @@ public class RayShooter : MonoBehaviour
         Cursor.visible = false;
     }
 
+    /// <summary>
+    /// По нажатию на мышь активируем/деактивируем переключатель
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
@@ -24,7 +25,6 @@ public class RayShooter : MonoBehaviour
             if (_activeSwitch != null) {
                 _activeSwitch.OnActive();
             }
-            
         } else if (Input.GetMouseButtonUp(0)) {
             if (_activeSwitch != null) {
                 _activeSwitch.OnDeactive();
@@ -32,6 +32,10 @@ public class RayShooter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Бросаем луч в сцену
+    /// </summary>
+    /// <returns> Возвращаем объект в который уперся луч </returns>
     private GameObject RaycastPlayer()
     {
         Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿/// <summary>
+/// Описаны основные типы переключателей
+/// </summary>
 public class TypeSwitch
 {
     public enum Type

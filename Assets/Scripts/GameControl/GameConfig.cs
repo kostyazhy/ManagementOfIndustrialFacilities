@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Конфигурация объектов в сумуляторе
+/// </summary>
 [CreateAssetMenu(fileName = "GameConfig", menuName = "Create game config")]
 public class GameConfig : ScriptableObject
 {
@@ -44,12 +45,4 @@ public class GameConfig : ScriptableObject
     public GameObject prefabButtonForWindlass;
     public Vector3 StartPositionButtonMagnet;
     public GameObject prefabButtonForMagnet;
-
-    [Header("Events")]
-    public GameEvent GameEventMoveTowerForward;
-    public GameEvent GameEventMoveTowerBack;
-    public GameEvent GameEventMoveWindlassLeft;
-    public GameEvent GameEventMoveWindlassRight;
-    public GameEvent GameEventMoveMagnetDown;
-    public GameEvent GameEventMoveMagnetUp;
 }

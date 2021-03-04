@@ -25,11 +25,11 @@ MonoBehaviour:
   prefabWindlass: {fileID: 3566971942602244369, guid: 588f5f91175777d408bbe703a1738a9e,
     type: 3}
   StartPositionMagnet: {x: 0, y: -11.3, z: 0}
-  SpeedMagnet: {x: 0, y: 0.04, z: 0}
+  SpeedMagnet: {x: 0, y: 0.2, z: 0}
   MagnetPower: 1000
   prefabMagnet: {fileID: 5698603786143178980, guid: 753bc09b804639a45ad8fd5e98e7cb5b,
     type: 3}
-  StartPositionControlPanel: {x: 3, y: 1, z: 10}
+  StartPositionControlPanel: {x: 1.6, y: 0.32, z: 10}
   prefabControlPanel: {fileID: 57033343984739240, guid: 94a6272c0b541f74f9beae289bbba8a1,
     type: 3}
   StartPositionSwitchForward: {x: 1, y: 1.44, z: -15.7}
@@ -51,15 +51,3 @@ MonoBehaviour:
   StartPositionButtonMagnet: {x: -1, y: 1.37, z: -15.9}
   prefabButtonForMagnet: {fileID: 3049976607382172626, guid: cf73d7852ac941b49a495ebd8aa89e93,
     type: 3}
-  GameEventMoveTowerForward: {fileID: 11400000, guid: 06d7c1d07d102354bae0167403e31f32,
-    type: 2}
-  GameEventMoveTowerBack: {fileID: 11400000, guid: bf1964975a44ac240bf6ea8e8d2cc82c,
-    type: 2}
-  GameEventMoveWindlassLeft: {fileID: 11400000, guid: 14fc1cd698789e64586893b913eb3b4b,
-    type: 2}
-  GameEventMoveWindlassRight: {fileID: 11400000, guid: 355a2a910ca2bb642a622ec517702d56,
-    type: 2}
-  GameEventMoveMagnetDown: {fileID: 11400000, guid: 2af62e6bed4f57b46964506da0c31f26,
-    type: 2}
-  GameEventMoveMagnetUp: {fileID: 11400000, guid: 9307a01159cf77b4e908e8932871d80c,
-    type: 2}

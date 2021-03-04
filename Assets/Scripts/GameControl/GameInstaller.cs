@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using Zenject;
 
+
+/// <summary>
+/// Устанавливаем зависимости на объекты для симулятора
+/// </summary>
 public class GameInstaller : MonoInstaller
 {
     [Inject]
     private GameConfig _config;
-
-    public struct SignalCheckpointReached { }
 
     public override void InstallBindings()
     {
@@ -36,6 +38,4 @@ public class GameInstaller : MonoInstaller
         Container.BindFactory<ControlPanelController, ButtonMagnet, ButtonMagnet.ButtonMagnetFabrik>()
             .FromComponentInNewPrefab(_config.prefabButtonForMagnet);
     }
-
-    
 }

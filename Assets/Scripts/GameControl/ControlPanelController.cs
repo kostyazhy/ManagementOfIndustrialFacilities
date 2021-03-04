@@ -1,6 +1,9 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
+
+/// <summary>
+/// Создает панель управления и все его комплектующие
+/// </summary>
 public class ControlPanelController
 {
     [Inject]
@@ -17,6 +20,7 @@ public class ControlPanelController
     [Inject]
     private ButtonMagnet.ButtonMagnetFabrik _buttonForMagnetFabrik;
 
+    //Events generated in the control panel 
     public delegate void SwitchActiveForward(bool active);
     public static event SwitchActiveForward OnMoveForwardTower;
 
@@ -38,11 +42,21 @@ public class ControlPanelController
     public delegate void SwitchActiveMagnet(bool active);
     public static event SwitchActiveMagnet OnActiveMagnet;
 
+    /// <summary>
+    /// Инициирует создание панели управления
+    /// </summary>
     public void Init()
     {
         CreateControlPanel();
     }
 
+    /// <summary>
+    /// Создает панель управления и его комплектующие: рубильники двигающие башню вперед/назад,
+    /// рубильники двигающие лебедку влево/вправо, кнопки двигающие магнит вверх/вниз,
+    /// кнопка активации магнита.
+    /// А таже метод располагает объекты на сцене
+    /// </summary>
+    /// <returns>Возвращает экземпляр панели управления - ControlPanel </returns>
     public ControlPanel CreateControlPanel()
     {
         var controlPanel = _controlPanelFabrik.Create(this);
@@ -89,6 +103,11 @@ public class ControlPanelController
         return controlPanel;
     }
 
+    /// <summary>
+    /// Генирирует событие для движения башни крана 
+    /// </summary>
+    /// <param name="active"> Нажат переключатель или нет</param>
+    /// <param name="type"> Тип переключателя </param>
     public void MoveTower(bool active, TypeSwitch.Type type)
     {
         switch (type) {
@@ -101,6 +120,11 @@ public class ControlPanelController
         }
     }
 
+    /// <summary>
+    /// Генирирует событие для движения лебедки 
+    /// </summary>
+    /// <param name="active"> Нажат переключатель или нет</param>
+    /// <param name="type"> Тип переключателя </param>
     public void MoveWindlass(bool active, TypeSwitch.Type type)
     {
         switch (type) {
@@ -119,6 +143,11 @@ public class ControlPanelController
         }
     }
 
+    /// <summary>
+    /// Генирирует событие для движения магнита
+    /// </summary>
+    /// <param name="active"> Нажат переключатель или нет</param>
+    /// <param name="type"> Тип переключателя </param>
     public void ActiveMagnet(bool active, TypeSwitch.Type type)
     {
         switch (type) {

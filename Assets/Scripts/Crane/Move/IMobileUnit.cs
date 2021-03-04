@@ -7,5 +7,5 @@ public interface IMobileUnit
 
     void MoveForward();
     void MoveBack();
-    void StopUnit();
+    void Stop();
 }

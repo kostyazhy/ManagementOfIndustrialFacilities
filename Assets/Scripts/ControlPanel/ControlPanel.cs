@@ -28,7 +28,7 @@ public class ControlPanel : MonoBehaviour, IControlPanel
 
     }
 
-    public class ControlPanelFabrik : Factory<ControlPanelController, ControlPanel>
+    public class ControlPanelFabrik : PlaceholderFactory<ControlPanelController, ControlPanel>
     {
 
     }
