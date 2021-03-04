@@ -13,11 +13,3 @@ MonoBehaviour:
   m_Name: SoInstaller
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: f9071ded8c1ba3b45813adc4e28eda61, type: 2}
-  _prefabCrane: {fileID: 3058357726637430240, guid: 6aa8999524b237b43ab62a63716829c5,
-    type: 3}
-  _prefabTower: {fileID: 3501140012433398732, guid: cbf5bb8764f392f40932ffe4ba3ca497,
-    type: 3}
-  _prefabWindlass: {fileID: 3566971942602244369, guid: 588f5f91175777d408bbe703a1738a9e,
-    type: 3}
-  _prefabMagnet: {fileID: 5698603786143178980, guid: 753bc09b804639a45ad8fd5e98e7cb5b,
-    type: 3}

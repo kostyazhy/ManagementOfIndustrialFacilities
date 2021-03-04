@@ -1,17 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
-public class Switch : MonoBehaviour, ISwitch
+public abstract class Switch: MonoBehaviour
 {
-    [Inject]
-    private IControlPanel _controlPanel;
+    protected bool active = false;
 
-    [Inject]
-    private ControlPanel _ControlPanel;
+    public TypeSwitch.Type type;
 
-    public void OnActive()
+    public virtual void OnActive()
     {
-        Debug.Log("On actived Switch");
-        _controlPanel.Value = 1;
+        active = true; 
+    }
+
+    public virtual void OnDeactive()
+    {
+        active = false;
     }
 }

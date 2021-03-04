@@ -1,5 +1,5 @@
-﻿public interface ITower
+﻿public interface ITower: IMobileUnit
 {
-    void MoveThere();
+    void MoveForward();
     void MoveBack();
 }

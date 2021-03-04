@@ -1,48 +1,75 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 public class ControlCrane : MonoBehaviour
 {
     [Inject]
     private GameConfig _config;
-
-    public bool activeForwardSwitch = false;
-    public bool activeBackSwitch = false;
-
-    private ITower _tower;
-
     [Inject]
-    private Vector3 _startPosTower;
+    private IMobileUnit _tower;
+    [Inject]
+    private IWindlass _windlass;
+    [Inject]
+    private Magnet _magnet;
 
-    private void Start()
+    private void OnEnable()
     {
-        //Init();
+        ControlPanelController.OnMoveForwardTower += MoveForwardTower;
+        ControlPanelController.OnMoveBackTower += MoveBackTower;
+        ControlPanelController.OnMoveLeftWindlass += MoveLeftWindlass;
+        ControlPanelController.OnMoveRightWindlass += MoveRightWindlass;
+        ControlPanelController.OnMoveUpWindlass += MoveUpWindlass;
+        ControlPanelController.OnMoveDownWindlass += MoveDownWindlass;
+        ControlPanelController.OnActiveMagnet += OnActiveMagnet;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (activeBackSwitch)
-            _tower.MoveBack();
-        else if (activeForwardSwitch)
-            _tower.MoveThere();
+        ControlPanelController.OnMoveForwardTower -= MoveForwardTower;
+        ControlPanelController.OnMoveBackTower -= MoveBackTower;
+        ControlPanelController.OnMoveLeftWindlass -= MoveLeftWindlass;
+        ControlPanelController.OnMoveRightWindlass -= MoveRightWindlass;
+        ControlPanelController.OnMoveUpWindlass -= MoveUpWindlass;
+        ControlPanelController.OnMoveDownWindlass -= OnActiveMagnet;
     }
 
-    /*public void Init()
+    private void MoveForwardTower(bool active)
     {
-        CreateTower();
-    }*/
-
-    public void Reset()
-    {
-        _startPosTower = _config.StartPositionTower;
+        _tower.MoveForwardFlag = active;
     }
 
-    public class CraneFabrik : Factory<Vector3, ControlCrane>
+    private void MoveBackTower(bool active)
+    {
+        _tower.MoveBackFlag = active;
+    }
+
+    private void MoveLeftWindlass(bool active)
+    {
+        _windlass.MoveBackFlag = active;
+    }
+
+    private void MoveRightWindlass(bool active)
+    {
+        _windlass.MoveForwardFlag = active;
+    }
+
+    private void MoveUpWindlass(bool active)
+    {
+        _windlass.MoveUpFlag = active;
+    }
+
+    private void MoveDownWindlass(bool active)
+    {
+        _windlass.MoveDownFlag = active;
+    }
+
+    private void OnActiveMagnet(bool active)
+    {
+        _magnet.ActiveMagnetFlag = active;
+    }
+
+    public class CraneFabrik : Factory<IMobileUnit, IWindlass, Magnet, ControlCrane>
     {
 
     }
-
-
 }

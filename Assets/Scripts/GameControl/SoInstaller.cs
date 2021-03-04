@@ -6,22 +6,17 @@ public class SoInstaller : ScriptableObjectInstaller<SoInstaller>
 {
     [SerializeField]
     private GameConfig _config;
-    [SerializeField]
-    private GameObject _prefabCrane;
-    [SerializeField]
-    private GameObject _prefabTower;
-    [SerializeField]
-    private GameObject _prefabWindlass;
-    [SerializeField]
-    private GameObject _prefabMagnet;
 
+    /*[SerializeField]
+    private GameEvent _gameEventMoveTowerForward;*/
+    /*
+    [SerializeField]
+    private GameEvent _gameEventMoveTowerBack;*/
 
     public override void InstallBindings()
     {
         Container.BindInstance(_config);
-        //Container.BindInstance(_prefabCrane);
-        //Container.BindInstance(_prefabTower);
-        /*Container.BindInstance(_prefabWindlass);
-        Container.BindInstance(_prefabMagnet);*/
+        //Container.BindInstance(_gameEventMoveTowerForward);
+        //Container.BindInstance(_gameEventMoveTowerBack);
     }
 }

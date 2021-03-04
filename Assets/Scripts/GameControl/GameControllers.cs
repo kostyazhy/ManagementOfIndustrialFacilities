@@ -12,6 +12,9 @@ public class GameControllers : MonoBehaviour
     [Inject]
     private CraneController _craneController;
 
+    [Inject]
+    private ControlPanelController _controlPanelController;
+
     public void Start()
     {
         Init();
@@ -23,5 +26,6 @@ public class GameControllers : MonoBehaviour
     private void Init()
     {
         _craneController.Init();
+        _controlPanelController.Init();
     }
 }

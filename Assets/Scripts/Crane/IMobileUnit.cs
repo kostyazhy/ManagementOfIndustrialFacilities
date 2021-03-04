@@ -1,7 +1,11 @@
 ﻿
 public interface IMobileUnit
 {
-    void MoveThere();
+    bool MoveForwardFlag { get; set; }
+
+    bool MoveBackFlag { get;  set; }
+
+    void MoveForward();
     void MoveBack();
     void StopUnit();
 }

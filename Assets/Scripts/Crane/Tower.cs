@@ -1,67 +1,58 @@
 ﻿using UnityEngine;
+using System.Collections;
 using Zenject;
 
 public class Tower : MonoBehaviour, IMobileUnit
 {
     private Transform _transform;
-
-    /*[Inject]
-    private GameConfig _config;*/
     [Inject]
     private float _speed;
-    /*[Inject]
-    private Vector3 deadLinePos;*/
-    /*[Inject]
-    private ControlCrane _controlCrane;*/
     [Inject]
     private CraneController _craneController;
 
-    [Inject]
-    private float minDistanceForDeadLine = 0.5f;
+    public bool MoveForwardFlag { get; set; } = false;
+
+    public bool MoveBackFlag { get; set; } = false;
 
     private void Start()
     {
-        //speed = _config.SpeedTowerCrane;
         _transform = transform;
-        Debug.Log(_speed);
     }
 
-    /*void Update()
+    void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            Debug.Log(_controlCrane.activeForwardSwitch);
+        if (MoveForwardFlag) {
+            MoveBack();
+        } else if (MoveBackFlag) {
+            MoveForward();
         }
-    }*/
+    }
 
     public void MoveBack()
     {
-        Debug.Log("MoveBack");
-        _transform.Translate(Vector3.back * _speed * Time.deltaTime);
+        _transform.Translate(Vector3.left * _speed * Time.deltaTime);
     }
 
-    public void MoveThere()
+    public void MoveForward()
     {
-        Debug.Log("MoveThere");
-        _transform.Translate(Vector3.forward * _speed * Time.deltaTime);
+        _transform.Translate(Vector3.right * _speed * Time.deltaTime);
     }
 
     public void StopUnit()
     {
-        //_controlCrane
         Debug.Log("Stop");
+        MoveBackFlag = false;
+        MoveForwardFlag = false;
+        /*if (MoveBackFlag) {
+            MoveBackFlag = false;
+            MoveForward();
+        } else if (MoveForwardFlag) {
+            MoveForwardFlag = false;
+            MoveBack();
+        }*/
     }
 
-    /*public bool IsDeadLine()
-    {
-        float dist = Vector3.Distance(deadLinePos, _transform.position);
-        if (dist < minDistanceForDeadLine) {
-            return true;
-        } else {
-            return false;
-        } 
-    }*/
-
-    public class TowerFabrik : Factory<float, float, CraneController, Tower>
+    public class TowerFabrik : Factory<float, CraneController, Tower>
     {
 
     }

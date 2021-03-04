@@ -6,10 +6,7 @@ using Zenject;
 public class ControlPanel : MonoBehaviour, IControlPanel
 {
     [Inject]
-    private GameControllers _gameControllers;
-
-    /*[Inject]
-    public ControlCrane _unit;*/
+    private ControlPanelController _controlPanelControllers;
 
     [SerializeField]
     private List<ISwitch> _switches;
@@ -27,6 +24,11 @@ public class ControlPanel : MonoBehaviour, IControlPanel
     }
 
     void OnActive()
+    {
+
+    }
+
+    public class ControlPanelFabrik : Factory<ControlPanelController, ControlPanel>
     {
 
     }
