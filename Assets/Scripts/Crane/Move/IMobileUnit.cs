@@ -5,6 +5,8 @@ public interface IMobileUnit
 
     bool MoveBackFlag { get;  set; }
 
+    bool MoveStopFlag { get; set; }
+
     void MoveForward();
     void MoveBack();
     void Stop();

@@ -50,6 +50,8 @@ public class ControlCrane : MonoBehaviour
     private void MoveForwardTower(bool active)
     {
         _tower.MoveForwardFlag = active;
+        _tower.MoveStopFlag = !active;
+        ;
     }
 
     /// <summary>
@@ -59,6 +61,7 @@ public class ControlCrane : MonoBehaviour
     private void MoveBackTower(bool active)
     {
         _tower.MoveBackFlag = active;
+        _tower.MoveStopFlag = !active;
     }
 
     /// <summary>
@@ -68,6 +71,7 @@ public class ControlCrane : MonoBehaviour
     private void MoveLeftWindlass(bool active)
     {
         _windlass.MoveBackFlag = active;
+        _tower.MoveStopFlag = !active;
     }
 
     /// <summary>
@@ -77,6 +81,7 @@ public class ControlCrane : MonoBehaviour
     private void MoveRightWindlass(bool active)
     {
         _windlass.MoveForwardFlag = active;
+        _tower.MoveStopFlag = !active;
     }
 
     /// <summary>

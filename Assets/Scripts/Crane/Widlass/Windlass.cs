@@ -16,11 +16,12 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
     [Inject]
     private Magnet _magnet;
 
-    private Transform _transform;
     [SerializeField]
     private Transform _cable;
     [SerializeField]
     private FixedJoint _bracing;
+
+    private Rigidbody _rgb;
 
     // states for changing the movement
     public bool MoveForwardFlag { get; set; } = false;
@@ -31,9 +32,11 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
     
     public bool MoveDownFlag { get; set; } = false;
 
+    public bool MoveStopFlag { get; set; } = false;
+
     private void Start()
     {
-        _transform = transform;
+        _rgb = GetComponent<Rigidbody>();
     }
     
     private void FixedUpdate()
@@ -42,11 +45,15 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
             MoveForward();
         } else if (MoveBackFlag) {
             MoveBack();
-        }
+        } 
+
         if (MoveDownFlag) {
             MoveDown();
         } else if (MoveUpFlag) {
             MoveUp();
+        }
+        if (MoveStopFlag) {
+            Stop();
         }
     }
 
@@ -55,7 +62,7 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
     /// </summary>
     public void MoveBack()
     {
-        _transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        _rgb.AddForce(Vector3.forward * _speed);
     }
 
     /// <summary>
@@ -63,7 +70,7 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
     /// </summary>
     public void MoveForward()
     {
-        _transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        _rgb.AddForce(Vector3.back * _speed);
     }
 
     /// <summary>
@@ -93,9 +100,7 @@ public class Windlass : MonoBehaviour, IWindlass, IMobileUnit
     /// </summary>
     public void Stop()
     {
-        Debug.Log("Stop");
-        MoveBackFlag = false;
-        MoveForwardFlag = false;
+        _rgb.velocity = Vector3.zero;
     }
 
     /// <summary>

@@ -8,6 +8,7 @@ using Zenject;
 public class Tower : MonoBehaviour, IMobileUnit
 {
     private Transform _transform;
+    private Rigidbody _rgb;
     [Inject]
     private float _speed;
     [Inject]
@@ -16,10 +17,12 @@ public class Tower : MonoBehaviour, IMobileUnit
     public bool MoveForwardFlag { get; set; } = false;
 
     public bool MoveBackFlag { get; set; } = false;
+    public bool MoveStopFlag { get; set; } = false;
 
     private void Start()
     {
         _transform = transform;
+        _rgb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
@@ -29,6 +32,10 @@ public class Tower : MonoBehaviour, IMobileUnit
         } else if (MoveBackFlag) {
             MoveForward();
         }
+
+        if (MoveStopFlag) {
+            Stop();
+        }
     }
 
     /// <summary>
@@ -36,7 +43,7 @@ public class Tower : MonoBehaviour, IMobileUnit
     /// </summary>
     public void MoveBack()
     {
-        _transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        _rgb.AddForce(Vector3.left * _speed);
     }
 
     /// <summary>
@@ -44,7 +51,7 @@ public class Tower : MonoBehaviour, IMobileUnit
     /// </summary>
     public void MoveForward()
     {
-        _transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        _rgb.AddForce(Vector3.right * _speed);
     }
 
     /// <summary>
@@ -52,16 +59,7 @@ public class Tower : MonoBehaviour, IMobileUnit
     /// </summary>
     public void Stop()
     {
-        Debug.Log("Stop");
-        MoveBackFlag = false;
-        MoveForwardFlag = false;
-        /*if (MoveBackFlag) {
-            MoveBackFlag = false;
-            MoveForward();
-        } else if (MoveForwardFlag) {
-            MoveForwardFlag = false;
-            MoveBack();
-        }*/
+        _rgb.velocity = Vector3.zero;
     }
 
     /// <summary>
