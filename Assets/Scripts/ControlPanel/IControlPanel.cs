@@ -1,5 +1,6 @@
 ﻿public interface IControlPanel
 {
-    int Value { get; set; }
-    void MoveUnitForward();
+    void MoveTower(bool active, TypeSwitch.Type type);
+    void MoveWindlass(bool active, TypeSwitch.Type type);
+    void ActiveMagnet(bool active, TypeSwitch.Type type);
 }

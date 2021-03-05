@@ -21,13 +21,13 @@ public class ControlCrane : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        ControlPanelController.OnMoveForwardTower += MoveForwardTower;
-        ControlPanelController.OnMoveBackTower += MoveBackTower;
-        ControlPanelController.OnMoveLeftWindlass += MoveLeftWindlass;
-        ControlPanelController.OnMoveRightWindlass += MoveRightWindlass;
-        ControlPanelController.OnMoveUpWindlass += MoveUpWindlass;
-        ControlPanelController.OnMoveDownWindlass += MoveDownWindlass;
-        ControlPanelController.OnActiveMagnet += OnActiveMagnet;
+        ControlPanel.OnMoveForwardTower += MoveForwardTower;
+        ControlPanel.OnMoveBackTower += MoveBackTower;
+        ControlPanel.OnMoveLeftWindlass += MoveLeftWindlass;
+        ControlPanel.OnMoveRightWindlass += MoveRightWindlass;
+        ControlPanel.OnMoveUpWindlass += MoveUpWindlass;
+        ControlPanel.OnMoveDownWindlass += MoveDownWindlass;
+        ControlPanel.OnActiveMagnet += OnActiveMagnet;
     }
 
     /// <summary>
@@ -35,12 +35,12 @@ public class ControlCrane : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        ControlPanelController.OnMoveForwardTower -= MoveForwardTower;
-        ControlPanelController.OnMoveBackTower -= MoveBackTower;
-        ControlPanelController.OnMoveLeftWindlass -= MoveLeftWindlass;
-        ControlPanelController.OnMoveRightWindlass -= MoveRightWindlass;
-        ControlPanelController.OnMoveUpWindlass -= MoveUpWindlass;
-        ControlPanelController.OnMoveDownWindlass -= OnActiveMagnet;
+        ControlPanel.OnMoveForwardTower -= MoveForwardTower;
+        ControlPanel.OnMoveBackTower -= MoveBackTower;
+        ControlPanel.OnMoveLeftWindlass -= MoveLeftWindlass;
+        ControlPanel.OnMoveRightWindlass -= MoveRightWindlass;
+        ControlPanel.OnMoveUpWindlass -= MoveUpWindlass;
+        ControlPanel.OnMoveDownWindlass -= OnActiveMagnet;
     }
 
     /// <summary>

@@ -14,7 +14,6 @@ public class StopLine : MonoBehaviour, IStopLine
     {
         var unit = other.GetComponent<IMobileUnit>();
         if (unit != null) {
-            Debug.Log(other.name);
             unit.Stop();
         }
     }

@@ -6,7 +6,7 @@
 public class ButtonWindlassY : Switch, ISwitch
 {
     [Inject]
-    private ControlPanelController _controlPanelControllers;
+    private IControlPanel _controlPanel;
 
     private TapButton _tap;
 
@@ -21,7 +21,7 @@ public class ButtonWindlassY : Switch, ISwitch
     public override void OnActive()
     {
         active = true;
-        _controlPanelControllers.MoveWindlass(active, type);
+        _controlPanel.MoveWindlass(active, type);
         _tap.Tap();
     }
 
@@ -31,7 +31,7 @@ public class ButtonWindlassY : Switch, ISwitch
     public override void OnDeactive()
     {
         active = false;
-        _controlPanelControllers.MoveWindlass(active, type);
+        _controlPanel.MoveWindlass(active, type);
         _tap.ReleaseButton();
     }
 
@@ -39,7 +39,7 @@ public class ButtonWindlassY : Switch, ISwitch
     /// Создает кнопку
     /// <params> ControlPanelController - _controlPanelControllers </params>
     /// </summary>
-    public class ButtonForWindlassFabrik : PlaceholderFactory<ControlPanelController, ButtonWindlassY>
+    public class ButtonForWindlassFabrik : PlaceholderFactory<IControlPanel, ButtonWindlassY>
     {
 
     }

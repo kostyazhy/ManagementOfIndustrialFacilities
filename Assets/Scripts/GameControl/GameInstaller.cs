@@ -29,13 +29,13 @@ public class GameInstaller : MonoInstaller
         // Create objects for control panel
         Container.BindFactory<ControlPanelController, ControlPanel, ControlPanel.ControlPanelFabrik>()
             .FromComponentInNewPrefab(_config.prefabControlPanel);
-        Container.BindFactory<ControlPanelController, SwitchTower, SwitchTower.SwitchForwardFabrik>()
+        Container.BindFactory<IControlPanel, SwitchTower, SwitchTower.SwitchForwardFabrik>()
             .FromComponentInNewPrefab(_config.prefabSwitchForward);
-        Container.BindFactory<ControlPanelController, SwitchWindlass, SwitchWindlass.SwitchBackFabrik>()
+        Container.BindFactory<IControlPanel, SwitchWindlass, SwitchWindlass.SwitchBackFabrik>()
             .FromComponentInNewPrefab(_config.prefabWindlassLeft);
-        Container.BindFactory<ControlPanelController, ButtonWindlassY, ButtonWindlassY.ButtonForWindlassFabrik>()
+        Container.BindFactory<IControlPanel, ButtonWindlassY, ButtonWindlassY.ButtonForWindlassFabrik>()
             .FromComponentInNewPrefab(_config.prefabButtonForWindlass);
-        Container.BindFactory<ControlPanelController, ButtonMagnet, ButtonMagnet.ButtonMagnetFabrik>()
+        Container.BindFactory<IControlPanel, ButtonMagnet, ButtonMagnet.ButtonMagnetFabrik>()
             .FromComponentInNewPrefab(_config.prefabButtonForMagnet);
     }
 }

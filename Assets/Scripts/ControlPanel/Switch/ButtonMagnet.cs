@@ -6,7 +6,7 @@
 public class ButtonMagnet : Switch, ISwitch
 {
     [Inject]
-    private ControlPanelController _controlPanelControllers;
+    private IControlPanel _controlPanel;
     private TapButton _tap;
 
     private void Start()
@@ -20,7 +20,7 @@ public class ButtonMagnet : Switch, ISwitch
     public override void OnActive()
     {
         active = !active;
-        _controlPanelControllers.ActiveMagnet(active, type);
+        _controlPanel.ActiveMagnet(active, type);
         _tap.Tap();
         _tap.ReleaseButton();
     }
@@ -37,7 +37,7 @@ public class ButtonMagnet : Switch, ISwitch
     /// Создает кнопку
     /// <params> ControlPanelController - _controlPanelControllers </params>
     /// </summary>
-    public class ButtonMagnetFabrik : PlaceholderFactory<ControlPanelController, ButtonMagnet>
+    public class ButtonMagnetFabrik : PlaceholderFactory<IControlPanel, ButtonMagnet>
     {
 
     }

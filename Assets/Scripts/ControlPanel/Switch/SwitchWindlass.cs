@@ -6,7 +6,7 @@
 public class SwitchWindlass : Switch, ISwitch
 {
     [Inject]
-    private ControlPanelController _controlPanelControllers;
+    private ControlPanel _controlPanel;
 
     /// <summary>
     /// Активирует движение башни
@@ -14,7 +14,7 @@ public class SwitchWindlass : Switch, ISwitch
     public override void OnActive()
     {
         active = true;
-        _controlPanelControllers.MoveWindlass(active, type);
+        _controlPanel.MoveWindlass(active, type);
     }
     /// <summary>
     /// Деактивирует движение башни
@@ -22,14 +22,14 @@ public class SwitchWindlass : Switch, ISwitch
     public override void OnDeactive()
     {
         active = false;
-        _controlPanelControllers.MoveWindlass(active, type);
+        _controlPanel.MoveWindlass(active, type);
     }
 
     /// <summary>
     /// Создает кнопку
     /// <params> ControlPanelController - _controlPanelControllers </params>
     /// </summary>
-    public class SwitchBackFabrik : PlaceholderFactory<ControlPanelController, SwitchWindlass>
+    public class SwitchBackFabrik : PlaceholderFactory<IControlPanel, SwitchWindlass>
     {
 
     }

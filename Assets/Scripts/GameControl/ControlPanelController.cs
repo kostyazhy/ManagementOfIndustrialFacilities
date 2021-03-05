@@ -20,27 +20,7 @@ public class ControlPanelController
     [Inject]
     private ButtonMagnet.ButtonMagnetFabrik _buttonForMagnetFabrik;
 
-    //Events generated in the control panel 
-    public delegate void SwitchActiveForward(bool active);
-    public static event SwitchActiveForward OnMoveForwardTower;
 
-    public delegate void SwitchActiveBack(bool active);
-    public static event SwitchActiveBack OnMoveBackTower;
-
-    public delegate void SwitchActiveLeft(bool active);
-    public static event SwitchActiveLeft OnMoveLeftWindlass;
-
-    public delegate void SwitchActiveRight(bool active);
-    public static event SwitchActiveRight OnMoveRightWindlass;
-
-    public delegate void SwitchActiveUp(bool active);
-    public static event SwitchActiveUp OnMoveUpWindlass;
-
-    public delegate void SwitchActiveDown(bool active);
-    public static event SwitchActiveDown OnMoveDownWindlass;
-
-    public delegate void SwitchActiveMagnet(bool active);
-    public static event SwitchActiveMagnet OnActiveMagnet;
 
     /// <summary>
     /// Инициирует создание панели управления
@@ -62,13 +42,13 @@ public class ControlPanelController
         var controlPanel = _controlPanelFabrik.Create(this);
         controlPanel.transform.position = _config.StartPositionControlPanel;
 
-        var switchForward = _switchForwardFabrik.Create(this);
-        var switchBack = _switchForwardFabrik.Create(this);
-        var switchLest = _switchBackFabrik.Create(this);
-        var switchRight = _switchBackFabrik.Create(this);
-        var buttonWindlassDown = _buttonForWindlassFabrik.Create(this);
-        var buttonWindlassUp = _buttonForWindlassFabrik.Create(this);
-        var buttonMagnet = _buttonForMagnetFabrik.Create(this);
+        var switchForward = CreateSwitchTower(controlPanel);
+        var switchBack = CreateSwitchTower(controlPanel);
+        var switchLest = CreateSwitchWindlass(controlPanel);
+        var switchRight = CreateSwitchWindlass(controlPanel);
+        var buttonWindlassDown = CreateButtonWindlass(controlPanel);
+        var buttonWindlassUp = CreateButtonWindlass(controlPanel);
+        var buttonMagnet = CreateButtonActiveMagnet(controlPanel);
 
         // Setting switches
         // SwitchForward
@@ -104,56 +84,43 @@ public class ControlPanelController
     }
 
     /// <summary>
-    /// Генирирует событие для движения башни крана 
+    /// Создает переключатель для управления башней
     /// </summary>
-    /// <param name="active"> Нажат переключатель или нет</param>
-    /// <param name="type"> Тип переключателя </param>
-    public void MoveTower(bool active, TypeSwitch.Type type)
+    /// <param name="controlPanel"> Экземпляр класса панели управления </param>
+    /// <returns> Экземпляр класса SwitchTower </returns>
+    public SwitchTower CreateSwitchTower(ControlPanel controlPanel)
     {
-        switch (type) {
-            case TypeSwitch.Type.Forward:
-                OnMoveForwardTower?.Invoke(active);
-                break;
-            case TypeSwitch.Type.Back:
-                OnMoveBackTower?.Invoke(active);
-                break;
-        }
+        return _switchForwardFabrik.Create(controlPanel);
+    }
+
+
+    /// <summary>
+    /// Создает переключатель для управления лебедкой
+    /// </summary>
+    /// <param name="controlPanel"> Экземпляр класса панели управления </param>
+    /// <returns> Экземпляр класса SwitchWindlass </returns>
+    public SwitchWindlass CreateSwitchWindlass(ControlPanel controlPanel)
+    {
+        return _switchBackFabrik.Create(controlPanel);
     }
 
     /// <summary>
-    /// Генирирует событие для движения лебедки 
+    /// Создает переключатель для управления тросом лебедки
     /// </summary>
-    /// <param name="active"> Нажат переключатель или нет</param>
-    /// <param name="type"> Тип переключателя </param>
-    public void MoveWindlass(bool active, TypeSwitch.Type type)
+    /// <param name="controlPanel"> Экземпляр класса панели управления </param>
+    /// <returns> Экземпляр класса ButtonWindlassY </returns>
+    public ButtonWindlassY CreateButtonWindlass(ControlPanel controlPanel)
     {
-        switch (type) {
-            case TypeSwitch.Type.Left:
-                OnMoveLeftWindlass?.Invoke(active);
-                break;
-            case TypeSwitch.Type.Right:
-                OnMoveRightWindlass?.Invoke(active);
-                break;
-            case TypeSwitch.Type.Up:
-                OnMoveUpWindlass?.Invoke(active);
-                break;
-            case TypeSwitch.Type.Down:
-                OnMoveDownWindlass?.Invoke(active);
-                break;
-        }
+        return _buttonForWindlassFabrik.Create(controlPanel);
     }
 
     /// <summary>
-    /// Генирирует событие для движения магнита
+    /// Создает переключатель для управления магнитом
     /// </summary>
-    /// <param name="active"> Нажат переключатель или нет</param>
-    /// <param name="type"> Тип переключателя </param>
-    public void ActiveMagnet(bool active, TypeSwitch.Type type)
+    /// <param name="controlPanel"> Экземпляр класса панели управления </param>
+    /// <returns> Экземпляр класса ButtonMagnet </returns>
+    public ButtonMagnet CreateButtonActiveMagnet(ControlPanel controlPanel)
     {
-        switch (type) {
-            case TypeSwitch.Type.Magnet:
-                OnActiveMagnet?.Invoke(active);
-                break;
-        }
+        return _buttonForMagnetFabrik.Create(controlPanel);
     }
 }
